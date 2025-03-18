@@ -27,7 +27,7 @@ def calculate_tax(taxable_income):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python calculate_tax.py <taxable_income>")
+        print("Usage: python tax_calculator.py <taxable_income>")
         sys.exit(1)
 
     taxable_income = float(sys.argv[1])
