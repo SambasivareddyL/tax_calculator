@@ -1,6 +1,6 @@
 import sys
 
-def calculate_refund():
+def calculate_refund(wages, fed_withholding, hsa_contribution, k401_contribution, standard_deduction):
     # User inputs
     wages = float(input("Enter your Wages, Tips, and Compensation: "))
     fed_withholding = float(input("Enter your Federal Withholding: "))
