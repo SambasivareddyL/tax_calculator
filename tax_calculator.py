@@ -1,5 +1,6 @@
 import sys
 import requests
+import json
 
 # Default IRS values for 2024 (update manually if IRS API is unavailable)
 DEFAULT_STANDARD_DEDUCTION = {
@@ -97,6 +98,20 @@ def calculate_refund(wages, fed_withholding, hsa_contribution, k401_contribution
 
     # Step 4: Calculate Refund or Amount Owed
     refund_or_due = fed_withholding - tax_owed
+
+    result = {
+        "year": year,
+        "agi": agi,
+        "taxable_income": taxable_income,
+        "standard_deduction": standard_deduction,
+        "hsa_contribution": hsa_contribution,
+        "k401_contribution": k401_contribution,
+        "tax_owed": tax_owed,
+        "refund_or_due": refund_or_due
+    }
+
+    with open('result.json', 'w') as f:
+        json.dump(result, f, indent=4)
 
     # Output result
     print("\n--- Tax Calculation Summary ---")
