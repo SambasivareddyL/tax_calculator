@@ -1,12 +1,6 @@
 import sys
 
 def calculate_refund(wages, fed_withholding, hsa_contribution, k401_contribution, standard_deduction):
-    # User inputs
-    wages = float(input("Enter your Wages, Tips, and Compensation: "))
-    fed_withholding = float(input("Enter your Federal Withholding: "))
-    hsa_contribution = float(input("Enter your HSA Contributions: "))
-    k401_contribution = float(input("Enter your 401K Contributions: "))
-    standard_deduction = float(input("Enter your Standard Deduction: "))
 
     # Step 1: Adjusted Gross Income (AGI)
     pre_tax_deductions = hsa_contribution + k401_contribution
@@ -47,7 +41,7 @@ def calculate_refund(wages, fed_withholding, hsa_contribution, k401_contribution
     else:
         print(f"You owe ${abs(refund_or_due):.2f} to the IRS")
 
-if __name__ == "__main__":
+def main():
     if len(sys.argv) != 6:
         print("Usage: tax_calculator.py <wages> <fed_withholding> <hsa_contribution> <k401_contribution> <standard_deduction>")
         sys.exit(1)
@@ -59,3 +53,6 @@ if __name__ == "__main__":
     standard_deduction = float(sys.argv[5])
 
     calculate_refund(wages, fed_withholding, hsa_contribution, k401_contribution, standard_deduction)
+
+if __name__ == "__main__":
+    main()
