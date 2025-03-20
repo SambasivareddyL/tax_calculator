@@ -1,3 +1,5 @@
+import sys
+
 def calculate_refund():
     # User inputs
     wages = float(input("Enter your Wages, Tips, and Compensation: "))
@@ -45,6 +47,15 @@ def calculate_refund():
     else:
         print(f"You owe ${abs(refund_or_due):.2f} to the IRS")
 
-# Run the function
 if __name__ == "__main__":
-    calculate_refund()
+    if len(sys.argv) != 6:
+        print("Usage: tax_calculator.py <wages> <fed_withholding> <hsa_contribution> <k401_contribution> <standard_deduction>")
+        sys.exit(1)
+
+    wages = float(sys.argv[1])
+    fed_withholding = float(sys.argv[2])
+    hsa_contribution = float(sys.argv[3])
+    k401_contribution = float(sys.argv[4])
+    standard_deduction = float(sys.argv[5])
+
+    calculate_refund(wages, fed_withholding, hsa_contribution, k401_contribution, standard_deduction)
